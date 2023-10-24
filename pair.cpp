@@ -53,7 +53,7 @@ Complex::Complex(const double& x_, const double& y_) : Pair(x_, y_) {}
 
 Complex::Complex(const Complex& obj) : Pair(obj) {}
 
-//Complex::Complex(const Pair& obj) : Pair(obj) {} ???
+// Complex::Complex(const Pair& obj) : Pair(obj) {} ???
 
 double Complex::norm_squared() const { return x * x + y * y; }
 
@@ -83,7 +83,7 @@ Complex Complex::operator+(const Complex& obj) {
 
   Complex* toReturn = (Complex*)&temp_1;
 
-  return *toReturn;
+  return *toReturn;  // ≈сли бы были дополнительные пол€ у класса Complex?
 
   // Pair* ptr = this;
   // const Pair* temp = &obj;
@@ -98,7 +98,7 @@ Complex Complex::operator-(const Complex& obj) {
 
   Complex* toReturn = (Complex*)&temp_1;
 
-  return *toReturn;
+  return *toReturn;  // ≈сли бы были дополнительные пол€ у класса Complex?
 
   // Pair* ptr = this;
   // const Pair* temp = &obj;
@@ -107,6 +107,26 @@ Complex Complex::operator-(const Complex& obj) {
 
 Complex Complex::operator*(const Complex& obj) {
   return Complex(x * obj.x - y * obj.y, x * obj.y + y * obj.x);
+}
+
+Complex Complex::operator*(const double& mult) {
+  Pair temp_1(*this);
+
+  temp_1 = temp_1 * mult;
+
+  Complex* toReturn = (Complex*)&temp_1;
+
+  return *toReturn;  // ≈сли бы были дополнительные пол€ у класса Complex?
+}
+
+Complex comp_pair::operator*(const double& mult, const Complex& obj) {
+  Pair temp_1(obj);
+
+  temp_1 = temp_1 * mult;
+
+  Complex* toReturn = (Complex*)&temp_1;
+
+  return *toReturn;  // ≈сли бы были дополнительные пол€ у класса Complex?
 }
 
 Complex Complex::operator/(const Complex& obj) {

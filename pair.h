@@ -28,7 +28,7 @@ class Complex : public Pair {
  public:
   Complex() : Pair() {}
   Complex(const double&, const double&);
-  //Complex(const Pair&); ???
+  // Complex(const Pair&); ???
   Complex(const Complex&);
 
   friend std::ostream& operator<<(std::ostream&, const Complex&);
@@ -42,7 +42,8 @@ class Complex : public Pair {
   Complex operator-(const Complex&);
 
   Complex operator*(const Complex&);
-
+  Complex operator*(const double& mult);
+  friend Complex operator*(const double&, const Complex&);
   Complex operator/(const Complex&);
 };
 }  // namespace comp_pair
